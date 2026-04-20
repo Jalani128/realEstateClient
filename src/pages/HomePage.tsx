@@ -4,7 +4,6 @@ import Footer from '../components/common/Footer';
 import { useSEO } from '../hooks/useSEO';
 import HeroSection from '../components/home/HeroSection';
 import StatsSection from '../components/home/StatsSection';
-import AIIntelligenceSection from '../components/home/AIIntelligenceSection';
 import CuratedListingsSection from '../components/home/CuratedListingsSection';
 import ProcessSection from '../components/home/ProcessSection';
 import TrustSignalsSection from '../components/home/TrustSignalsSection';
@@ -14,7 +13,7 @@ import CTASection from '../components/home/CTASection';
 const HomePage: React.FC = () => {
   useSEO({
     title: 'Premium Real Estate Platform',
-    description: 'BuildEstate offers AI-powered property search, location trends analysis, and investment insights to find your perfect property in India.',
+    description: 'BuildEstate offers premium property search, expert guidance, and personalized service to find your perfect property in India.',
   });
 
   return (
@@ -27,9 +26,6 @@ const HomePage: React.FC = () => {
 
       {/* Stats Section */}
       <StatsSection />
-
-      {/* AI Intelligence Section */}
-      <AIIntelligenceSection />
 
       {/* Curated Listings Section */}
       <CuratedListingsSection />

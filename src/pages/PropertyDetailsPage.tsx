@@ -94,13 +94,13 @@ const PropertyDetailsPage: React.FC = () => {
         <Navbar />
         <div className="flex items-center justify-center py-32">
           <div className="text-center">
-            <span className="material-icons text-5xl text-[#D4755B] mb-4">error_outline</span>
+            <span className="material-icons text-5xl text-[#2E3192] mb-4">error_outline</span>
             <p className="font-manrope text-xl text-[#374151] mb-4">{error || 'Property not found'}</p>
             <a
               href="https://huntmynest.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#D4755B] text-white font-manrope font-bold px-8 py-3 rounded-lg hover:bg-[#B86851] transition-all inline-block"
+              className="bg-[#2E3192] text-white font-manrope font-bold px-8 py-3 rounded-lg hover:bg-[#B86851] transition-all inline-block"
             >
               Back to Properties
             </a>

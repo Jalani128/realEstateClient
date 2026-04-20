@@ -29,7 +29,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
       '@type': 'WebSite',
       name: 'BuildEstate',
       url: SITE_URL,
-      description: 'AI-powered luxury real estate platform for finding your perfect property in India.',
+      description: 'Premium real estate platform for finding your perfect property in India.',
       potentialAction: {
         '@type': 'SearchAction',
         target: `${SITE_URL}/properties?q={search_term_string}`,
@@ -77,13 +77,13 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
       ...(data?.beds && { numberOfRooms: data.beds }),
       ...(data?.baths && { numberOfBathroomsTotal: data.baths }),
     },
-    aiHub: {
+    services: {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
-      name: 'AI Property Hub - BuildEstate',
+      name: 'Property Services - BuildEstate',
       applicationCategory: 'RealEstateApplication',
-      description: 'AI-powered real estate analytics, property search, and investment insights.',
-      url: `${SITE_URL}/ai-hub`,
+      description: 'Premium real estate services, property search, and investment guidance.',
+      url: `${SITE_URL}/services`,
       offers: {
         '@type': 'Offer',
         price: '0',

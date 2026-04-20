@@ -8,14 +8,13 @@ const ProcessSection: React.FC = () => {
           {/* Left - Sticky Content */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-24">
-              <div className="font-space-mono text-sm text-[#D4755B] uppercase tracking-widest mb-6">Process</div>
+              <div className="font-space-mono text-sm text-[#2E3192] uppercase tracking-widest mb-6">Process</div>
               <h2 className="font-fraunces text-5xl text-[#111827] mb-6 leading-tight">
                 The Path to Your<br />
-                <span className="italic text-[#D4755B]">New Beginning</span>
+                <span className="italic text-[#2E3192]">New Beginning</span>
               </h2>
               <p className="font-manrope font-light text-lg text-[#4b5563] mb-8 leading-relaxed">
-                We've simplified the complex journey of buying a home into four seamless, AI-
-                assisted steps.
+                We've simplified the complex journey of buying a home into four seamless steps.
               </p>
               <button className="bg-[#111827] text-white font-manrope font-medium px-8 py-3 rounded-lg shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)] hover:bg-[#1f2937] transition-all">
                 Start Your Journey
@@ -36,7 +35,7 @@ const ProcessSection: React.FC = () => {
                 <div>
                   <h3 className="font-syne font-bold text-2xl text-[#111827] mb-3">Profile Analysis</h3>
                   <p className="font-manrope text-base text-[#4b5563] leading-relaxed">
-                    Our AI deep-dives into your preferences, lifestyle needs, and financial goals to build a comprehensive
+                    We deep-dive into your preferences, lifestyle needs, and financial goals to build a comprehensive
                     buyer profile.
                   </p>
                 </div>
@@ -54,7 +53,7 @@ const ProcessSection: React.FC = () => {
                 <div>
                   <h3 className="font-syne font-bold text-2xl text-[#111827] mb-3">Smart Matching</h3>
                   <p className="font-manrope text-base text-[#4b5563] leading-relaxed">
-                    Algorithms scan thousands of listings to find properties that align with your unique criteria, filtering out
+                    Our experts scan thousands of listings to find properties that align with your unique criteria, filtering out
                     the noise.
                   </p>
                 </div>

@@ -33,13 +33,13 @@ const Navbar: React.FC = () => {
     const commonClasses = isMobile
       ? `font-manrope text-lg py-2 transition-colors ${
           link.internal && isActive(link.path)
-            ? 'text-[#D4755B] font-semibold'
-            : 'text-[#374151] hover:text-[#D4755B]'
+            ? 'text-[#2E3192] font-semibold'
+            : 'text-[#374151] hover:text-[#2E3192]'
         }`
       : `font-manrope transition-colors ${
           link.internal && isActive(link.path)
-            ? 'text-[#D4755B] font-semibold'
-            : 'text-[#374151] hover:text-[#D4755B]'
+            ? 'text-[#2E3192] font-semibold'
+            : 'text-[#374151] hover:text-[#2E3192]'
         }`;
 
     if (link.internal) {
@@ -81,7 +81,12 @@ const Navbar: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-8 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
-          <img src="/Assets/Landscape_logo.png" alt="BuildEstate" className="h-9 w-auto" />
+          <img 
+            src="/Assets/logo.png" 
+            alt="BuildEstate" 
+            className="h-9 w-auto"
+            // style={{ filter: 'hue-rotate(190deg) saturate(2.5) brightness(0.9)' }}
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -91,7 +96,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-[#374151] hover:text-[#D4755B] transition-colors"
+          className="md:hidden p-2 text-[#374151] hover:text-[#2E3192] transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <span className="font-material-icons text-2xl">

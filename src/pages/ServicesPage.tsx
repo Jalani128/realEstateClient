@@ -6,13 +6,13 @@ import { useSEO } from '../hooks/useSEO';
 const ServicesPage: React.FC = () => {
   useSEO({
     title: 'Our Services - BuildEstate',
-    description: 'Discover BuildEstate\'s AI-powered real estate services including property search, investment analysis, and personalized home finding.',
+    description: 'Discover BuildEstate\'s premium real estate services including property search, investment analysis, and personalized home finding.',
   });
 
   const services = [
     {
-      title: 'AI Property Search',
-      description: 'Find your perfect property using our advanced AI matching algorithm that understands your preferences.',
+      title: 'Property Search',
+      description: 'Find your perfect property with our expert guidance that understands your preferences.',
       icon: '🔍',
     },
     {
@@ -53,7 +53,7 @@ const ServicesPage: React.FC = () => {
               Our Services
             </h1>
             <p className="font-manrope text-xl text-[#4b5563] max-w-2xl mx-auto">
-              BuildEstate offers a comprehensive suite of AI-powered services to help you find your dream property with confidence.
+              BuildEstate offers a comprehensive suite of premium services to help you find your dream property with confidence.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ const ServicesPage: React.FC = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl border border-[#E6D5C3] hover:border-[#D4755B] transition-all hover:shadow-xl"
+                className="bg-white p-8 rounded-2xl border border-[#E6D5C3] hover:border-[#2E3192] transition-all hover:shadow-xl"
               >
                 <div className="text-5xl mb-4">{service.icon}</div>
                 <h3 className="font-fraunces text-2xl font-bold text-[#111827] mb-3">
@@ -84,7 +84,7 @@ const ServicesPage: React.FC = () => {
               href="https://huntmynest.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#D4755B] text-white font-manrope font-bold px-8 py-4 rounded-xl hover:bg-[#B86851] transition-all shadow-lg hover:shadow-xl"
+              className="inline-block bg-[#2E3192] text-white font-manrope font-bold px-8 py-4 rounded-xl hover:bg-[#B86851] transition-all shadow-lg hover:shadow-xl"
             >
               Browse Properties
             </a>

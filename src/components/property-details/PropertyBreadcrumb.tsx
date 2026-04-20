@@ -19,7 +19,7 @@ const PropertyBreadcrumb: React.FC<PropertyBreadcrumbProps> = ({
           {/* Back Button */}
           <button 
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-[#64748B] hover:text-[#D4755B] transition-colors group"
+            className="flex items-center gap-2 text-[#64748B] hover:text-[#2E3192] transition-colors group"
           >
             <span className="material-icons text-base">
               arrow_back
@@ -31,13 +31,13 @@ const PropertyBreadcrumb: React.FC<PropertyBreadcrumbProps> = ({
 
           {/* Breadcrumb Trail */}
           <nav className="flex items-center gap-2 text-xs tracking-wider uppercase opacity-80">
-            <Link to="/" className="font-manrope font-extralight text-[#64748B] hover:text-[#D4755B] transition-colors">
+            <Link to="/" className="font-manrope font-extralight text-[#64748B] hover:text-[#2E3192] transition-colors">
               Home
             </Link>
             <span className="font-manrope text-[#CBD5E1]">
               /
             </span>
-            <a href="https://huntmynest.com/" target="_blank" rel="noopener noreferrer" className="font-manrope font-extralight text-[#64748B] hover:text-[#D4755B] transition-colors">
+            <a href="https://huntmynest.com/" target="_blank" rel="noopener noreferrer" className="font-manrope font-extralight text-[#64748B] hover:text-[#2E3192] transition-colors">
               Properties
             </a>
             <span className="font-manrope text-[#CBD5E1]">

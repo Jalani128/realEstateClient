@@ -72,7 +72,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="text-[#D4755B] font-manrope font-semibold text-sm hover:underline"
+          className="text-[#2E3192] font-manrope font-semibold text-sm hover:underline"
         >
           Schedule another visit
         </button>
@@ -84,7 +84,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
     <div className="bg-white border border-[#E6E0DA] rounded-2xl p-8 shadow-lg sticky top-8">
       {/* Header */}
       <div className="flex items-center gap-2 mb-6">
-        <span className="material-icons text-[#D4755B] text-xl">
+        <span className="material-icons text-[#2E3192] text-xl">
           calendar_today
         </span>
         <h3 className="font-syne text-xl text-[#0F172A]">
@@ -124,7 +124,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
             value={formData.fullName}
             onChange={handleInputChange}
             placeholder="Enter your full name"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
             required
           />
         </div>
@@ -140,7 +140,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
             value={formData.email}
             onChange={handleInputChange}
             placeholder="your.email@example.com"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
             required
           />
         </div>
@@ -156,7 +156,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
             value={formData.phone}
             onChange={handleInputChange}
             placeholder="+91 98765 43210"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
             required
           />
         </div>
@@ -171,7 +171,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
             name="date"
             value={formData.date}
             onChange={handleInputChange}
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] focus:outline-none focus:border-[#2E3192] transition-colors"
             required
           />
         </div>
@@ -185,7 +185,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
             name="timeSlot"
             value={formData.timeSlot}
             onChange={handleInputChange}
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] focus:outline-none focus:border-[#D4755B] transition-colors appearance-none cursor-pointer"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] focus:outline-none focus:border-[#2E3192] transition-colors appearance-none cursor-pointer"
             required
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230F172A' d='M6 8L2 4h8z'/%3E%3C/svg%3E")`,
@@ -212,7 +212,7 @@ const ScheduleViewingCard: React.FC<ScheduleViewingCardProps> = ({ property }) =
         <button
           type="submit"
           disabled={submitting}
-          className="w-full bg-[#D4755B] hover:bg-[#C05621] disabled:opacity-60 disabled:cursor-not-allowed text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl mt-6"
+          className="w-full bg-[#2E3192] hover:bg-[#C05621] disabled:opacity-60 disabled:cursor-not-allowed text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl mt-6"
         >
           {submitting ? 'Scheduling...' : 'Schedule Visit'}
         </button>

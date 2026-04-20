@@ -5,10 +5,10 @@ const AboutAISection: React.FC = () => {
   const imgVerticalArchitecturalDetail = "https://images.unsplash.com/photo-1695067440629-b5e513976100?w=600";
   
   const features = [
-    "Predictive Market Analysis",
-    "Hyper-local Neighborhood Data",
-    "Investment Value Projection",
-    "Lifestyle Compatibility Scoring"
+    "Market Analysis",
+    "Neighborhood Insights",
+    "Investment Guidance",
+    "Personalized Matching"
   ];
 
   return (
@@ -19,27 +19,26 @@ const AboutAISection: React.FC = () => {
           <div>
             {/* Label */}
             <div className="mb-6">
-              <p className="font-space-mono text-xs text-[#D4755B] uppercase tracking-[1.2px]">
-                The Engine
+              <p className="font-space-mono text-xs text-[#2E3192] uppercase tracking-[1.2px]">
+                Why Choose Us
               </p>
             </div>
 
             {/* Headline */}
             <h2 className="mb-6">
               <span className="font-syne text-5xl leading-[48px] text-[#221410] block font-semibold">
-                AI-Powered
+                Premium
               </span>
-              <span className="font-fraunces font-light italic text-5xl leading-[48px] text-[#D4755B] block">
-                Property Intelligence
+              <span className="font-fraunces font-light italic text-5xl leading-[48px] text-[#2E3192] block">
+                Property Services
               </span>
             </h2>
 
             {/* Description */}
             <p className="font-manrope font-extralight text-lg leading-[29.25px] text-[#4b5563] mb-8">
-              Our proprietary algorithms analyze millions of data points—from sun
-              patterns and neighborhood noise levels to architectural styles and
-              historical value trends—to present you with opportunities others
-              miss.
+              We analyze key factors—from neighborhood characteristics 
+              to architectural styles and value trends—to present you with 
+              opportunities you won't find elsewhere.
             </p>
 
             {/* Features List */}
@@ -47,7 +46,7 @@ const AboutAISection: React.FC = () => {
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <div className="w-6 h-6 flex items-center justify-center">
-                    <Check className="w-5 h-5 text-[#D4755B]" />
+                    <Check className="w-5 h-5 text-[#2E3192]" />
                   </div>
                   <span className="font-manrope font-extralight text-base text-[#221410]">
                     {feature}
@@ -58,18 +57,18 @@ const AboutAISection: React.FC = () => {
 
             {/* Link */}
             <a 
-              href="#" 
-              className="inline-flex items-center gap-2 border-b border-[#221410] pb-1 group hover:border-[#D4755B] transition-colors"
+              href="/contact" 
+              className="inline-flex items-center gap-2 border-b border-[#221410] pb-1 group hover:border-[#2E3192] transition-colors"
             >
-              <span className="font-space-mono text-sm text-[#221410] group-hover:text-[#D4755B] transition-colors">
-                Learn about our Tech
+              <span className="font-space-mono text-sm text-[#221410] group-hover:text-[#2E3192] transition-colors">
+                Contact Us
               </span>
 
-              <ArrowRight className="w-4 h-4 text-[#221410] group-hover:text-[#D4755B] transition-colors" />
+              <ArrowRight className="w-4 h-4 text-[#221410] group-hover:text-[#2E3192] transition-colors" />
             </a>
           </div>
 
-          {/* Right - Image with AI Card Overlay */}
+          {/* Right - Image with Card Overlay */}
           <div className="relative">
             {/* Background overlay (rotated) */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -80,24 +79,24 @@ const AboutAISection: React.FC = () => {
             <div className="relative aspect-[560/700] rounded-lg overflow-hidden shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)]">
               <img 
                 src={imgVerticalArchitecturalDetail}
-                alt="AI Property Intelligence"
+                alt="Premium Property Services"
                 className="absolute h-full left-[-12.5%] w-[125%] object-cover"
               />
 
-              {/* AI Match Card Overlay */}
+              {/* Featured Card Overlay */}
               <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/90 border border-[#E6E0DA] rounded p-4 flex items-center gap-4">
                 {/* Icon */}
-                <div className="w-10 h-[46px] bg-[rgba(236,70,19,0.1)] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-6 h-6 text-[#D4755B]" />
+                <div className="w-10 h-[46px] bg-[rgba(46,49,146,0.1)] rounded-full flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-6 h-6 text-[#2E3192]" />
                 </div>
 
                 {/* Content */}
                 <div>
                   <p className="font-space-mono text-xs text-[#6b7280] uppercase mb-1">
-                    Match Score
+                    Featured
                   </p>
                   <p className="font-manrope font-extralight text-lg text-[#221410]">
-                    98.5% Compatibility
+                    Premium Service
                   </p>
                 </div>
               </div>

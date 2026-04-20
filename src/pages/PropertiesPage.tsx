@@ -189,11 +189,11 @@ const PropertiesPage: React.FC = () => {
           {error && !loading && (
             <div className="flex items-center justify-center py-24">
               <div className="text-center">
-                <span className="material-icons text-4xl text-[#D4755B] mb-4">error_outline</span>
+                <span className="material-icons text-4xl text-[#2E3192] mb-4">error_outline</span>
                 <p className="font-manrope text-[#374151] mb-4">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="bg-[#D4755B] text-white font-manrope font-bold px-6 py-2 rounded-lg hover:bg-[#B86851] transition-all"
+                  className="bg-[#2E3192] text-white font-manrope font-bold px-6 py-2 rounded-lg hover:bg-[#B86851] transition-all"
                 >
                   Retry
                 </button>

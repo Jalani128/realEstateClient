@@ -85,10 +85,10 @@ const PropertyHeader: React.FC<PropertyHeaderProps> = ({
               Listed Price
             </p>
             <div className="flex items-baseline gap-1">
-              <span className="font-space-mono font-bold text-xl text-[#D4755B]">
+              <span className="font-space-mono font-bold text-xl text-[#2E3192]">
                 ₹
               </span>
-              <span className="font-space-mono font-bold text-4xl text-[#D4755B]">
+              <span className="font-space-mono font-bold text-4xl text-[#2E3192]">
                 {price}
               </span>
             </div>
@@ -100,7 +100,7 @@ const PropertyHeader: React.FC<PropertyHeaderProps> = ({
           {/* Bedrooms */}
           <div className="flex flex-col items-center gap-3">
             <div className="w-12 h-12 bg-[rgba(212,117,91,0.1)] rounded-lg flex items-center justify-center">
-              <span className="material-icons text-2xl text-[#D4755B]">
+              <span className="material-icons text-2xl text-[#2E3192]">
                 bed
               </span>
             </div>
@@ -117,7 +117,7 @@ const PropertyHeader: React.FC<PropertyHeaderProps> = ({
           {/* Bathrooms */}
           <div className="flex flex-col items-center gap-3">
             <div className="w-12 h-12 bg-[rgba(212,117,91,0.1)] rounded-lg flex items-center justify-center">
-              <span className="material-icons text-2xl text-[#D4755B]">
+              <span className="material-icons text-2xl text-[#2E3192]">
                 bathtub
               </span>
             </div>
@@ -134,7 +134,7 @@ const PropertyHeader: React.FC<PropertyHeaderProps> = ({
           {/* Square Feet */}
           <div className="flex flex-col items-center gap-3">
             <div className="w-12 h-12 bg-[rgba(212,117,91,0.1)] rounded-lg flex items-center justify-center">
-              <span className="material-icons text-2xl text-[#D4755B]">
+              <span className="material-icons text-2xl text-[#2E3192]">
                 square_foot
               </span>
             </div>

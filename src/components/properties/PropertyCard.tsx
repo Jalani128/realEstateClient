@@ -45,7 +45,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
         {/* Badge */}
         {badge && (
           <div className={`absolute top-4 left-4 px-3 py-1.5 rounded text-white font-space-mono text-xs font-bold shadow-lg ${
-            badge === 'HOT' ? 'bg-[#D4755B]' :
+            badge === 'HOT' ? 'bg-[#2E3192]' :
             badge === 'SOLD' ? 'bg-gray-500' :
             badge === 'FOR RENT' ? 'bg-blue-500' :
             'bg-[#10B981]'
@@ -64,8 +64,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
         >
           <span className={`material-icons text-xl transition-all ${
             isFavorite 
-              ? 'text-[#D4755B]' 
-              : 'text-[#6B7280] group-hover/fav:text-[#D4755B]'
+              ? 'text-[#2E3192]' 
+              : 'text-[#6B7280] group-hover/fav:text-[#2E3192]'
           }`}>
             {isFavorite ? 'favorite' : 'favorite_border'}
           </span>
@@ -76,10 +76,10 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       <div className="p-5">
         {/* Price */}
         <div className="flex items-baseline gap-1 mb-2">
-          <span className="font-space-mono font-bold text-xl text-[#D4755B]">
+          <span className="font-space-mono font-bold text-xl text-[#2E3192]">
             ₹
           </span>
-          <span className="font-space-mono font-bold text-2xl text-[#D4755B]">
+          <span className="font-space-mono font-bold text-2xl text-[#2E3192]">
             {price}
           </span>
         </div>
@@ -91,7 +91,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
 
         {/* Location */}
         <div className="flex items-center gap-1 mb-4">
-          <span className="material-icons text-[#D4755B] text-sm">
+          <span className="material-icons text-[#2E3192] text-sm">
             location_on
           </span>
           <span className="font-manrope font-extralight text-sm text-[#6B7280]">
@@ -141,7 +141,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
           </div>
         )}
 
-        <button className="w-full mt-2 bg-transparent border border-[#D4755B] text-[#D4755B] font-manrope font-bold py-2 rounded-lg hover:bg-[#D4755B] hover:text-white transition-all">
+        <button className="w-full mt-2 bg-transparent border border-[#2E3192] text-[#2E3192] font-manrope font-bold py-2 rounded-lg hover:bg-[#2E3192] hover:text-white transition-all">
           View Details
         </button>
       </div>

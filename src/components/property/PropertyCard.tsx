@@ -13,7 +13,6 @@ interface PropertyCardProps {
   baths: number;
   sqft: number;
   featured?: boolean;
-  aiMatch?: number;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({
@@ -25,20 +24,14 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   baths,
   sqft,
   featured,
-  aiMatch,
 }) => {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer">
       <div className="relative h-64">
         <img src={image} alt={title} className="w-full h-full object-cover" />
         {featured && (
-          <div className="absolute top-4 left-4 bg-[#D4755B] text-white px-3 py-1 rounded-lg font-manrope font-bold text-xs">
+          <div className="absolute top-4 left-4 bg-[#2E3192] text-white px-3 py-1 rounded-lg font-manrope font-bold text-xs">
             FEATURED
-          </div>
-        )}
-        {aiMatch && (
-          <div className="absolute top-4 right-4 bg-[rgba(212,117,91,0.1)] px-2 py-1 rounded">
-            <span className="font-manrope font-bold text-xs text-[#D4755B]">AI MATCH: {aiMatch}%</span>
           </div>
         )}
       </div>

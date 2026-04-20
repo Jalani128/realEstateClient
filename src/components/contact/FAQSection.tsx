@@ -12,8 +12,8 @@ const FAQSection: React.FC = () => {
   const faqs: FAQItem[] = [
     {
       id: 1,
-      question: "How does the AI matching process work?",
-      answer: "Our proprietary algorithm analyzes over 50 data points from your preferences and lifestyle inputs to suggest properties that align with your unique needs, often uncovering options you might have missed."
+      question: "How does the property matching process work?",
+      answer: "Our expert team analyzes your preferences and lifestyle needs to suggest properties that align with your unique requirements, often uncovering options you might have missed."
     },
     {
       id: 2,
@@ -23,12 +23,12 @@ const FAQSection: React.FC = () => {
     {
       id: 3,
       question: "Can I list my property exclusively with BuildEstate?",
-      answer: "Yes, we offer exclusive listing agreements with premium marketing benefits including professional photography, virtual tours, AI-powered listing optimization, and dedicated property consultant support throughout the selling process."
+      answer: "Yes, we offer exclusive listing agreements with premium marketing benefits including professional photography, virtual tours, listing optimization, and dedicated property consultant support throughout the selling process."
     },
     {
       id: 4,
-      question: "How do I schedule a virtual tour?",
-      answer: "You can schedule a virtual tour directly from any property listing page by clicking the 'Schedule Virtual Tour' button. Choose your preferred date and time, and our team will send you a confirmation with the video conference link."
+      question: "How do I schedule a property viewing?",
+      answer: "You can schedule a viewing directly from any property listing page by clicking the 'Schedule Viewing' button. Choose your preferred date and time, and our team will send you a confirmation."
     }
   ];
 
@@ -42,7 +42,7 @@ const FAQSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-3">
-            <span className="font-space-mono text-xs text-[#D4755B] uppercase tracking-widest">
+            <span className="font-space-mono text-xs text-[#2E3192] uppercase tracking-widest">
               Help Center
             </span>
           </div>
@@ -69,7 +69,7 @@ const FAQSection: React.FC = () => {
               >
                 {/* Number Badge */}
                 <div className="w-8 h-8 bg-[#F9F7F2] border border-[#E6E0DA] rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="font-syne font-bold text-sm text-[#D4755B]">
+                  <span className="font-syne font-bold text-sm text-[#2E3192]">
                     {String(faq.id).padStart(2, '0')}
                   </span>
                 </div>
@@ -80,7 +80,7 @@ const FAQSection: React.FC = () => {
                 </h3>
 
                 {/* Expand/Collapse Icon */}
-                <span className={`material-icons text-[#D4755B] transition-transform ${
+                <span className={`material-icons text-[#2E3192] transition-transform ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}>
                   expand_more
@@ -103,7 +103,7 @@ const FAQSection: React.FC = () => {
         <div className="text-center mt-12">
           <a 
             href="#" 
-            className="inline-flex items-center gap-2 font-manrope font-bold text-base text-[#D4755B] hover:text-[#C05621] transition-colors group"
+            className="inline-flex items-center gap-2 font-manrope font-bold text-base text-[#2E3192] hover:text-[#C05621] transition-colors group"
           >
             <span>Get Full Knowledge Base</span>
             <span className="material-icons text-lg group-hover:translate-x-1 transition-transform">
