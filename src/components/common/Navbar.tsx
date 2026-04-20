@@ -84,9 +84,7 @@ const Navbar: React.FC = () => {
           <img 
             src="/Assets/logo.png" 
             alt="BuildEstate" 
-            className="h-9 w-auto"
-            // style={{ filter: 'hue-rotate(190deg) saturate(2.5) brightness(0.9)' }}
-          />
+            className="h-9 w-auto"/>  
         </Link>
 
         {/* Desktop Navigation */}
