@@ -82,8 +82,8 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
           <img 
-            src="/Assets/logo.png" 
-            alt="BuildEstate" 
+            src="/logo.png" 
+            alt="RealEstate" 
             className="h-9 w-auto"/>  
         </Link>
 
