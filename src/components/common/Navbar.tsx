@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
           <img 
             src="/logo.png" 
             alt="RealEstate" 
-            className="h-9 w-auto"/>  
+            className="h-14 w-auto"/>  
         </Link>
 
         {/* Desktop Navigation */}
