@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import happyHomeowner1 from '../../images/Happy Homeowners_1.jpg';
 import happyHomeowner2 from '../../images/Happy Homeowners_2.jpg';
 import happyHomeowner3 from '../../images/Team section.jpg';
-import rightFeatureCard from '../../images/Right side feature card.jpg';
+import heroFallback from '../../images/Hero Section.jpg';
 
 const HeroSection: React.FC = () => {
-  const propertyImages = [
-    happyHomeowner1,
-    happyHomeowner2,
-    happyHomeowner3,
-    rightFeatureCard,
-  ];
+  const propertyImages = [happyHomeowner1, happyHomeowner2, happyHomeowner3];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,9 +18,9 @@ const HeroSection: React.FC = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -30,136 +28,168 @@ const HeroSection: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" as const }
-    }
+      transition: { duration: 0.8, ease: 'easeOut' as const },
+    },
+  };
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
+
+  const handleVideoError = () => {
+    setVideoError(true);
   };
 
   return (
-    <section className="relative bg-[#F8F6F6] pt-20 pb-32 overflow-hidden">
-      {/* Background decorative blurs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, 20, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut" as const
-        }}
-        className="absolute right-0 top-14 w-64 h-64 bg-[rgba(236,70,19,0.1)] rounded-full blur-[32px]"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.4, 0.2],
-          x: [0, -30, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 10,
-          delay: 1,
-          repeat: Infinity,
-          ease: "easeInOut" as const
-        }}
-        className="absolute left-[738px] bottom-22 w-64 h-64 bg-[rgba(254,215,170,0.2)] rounded-full blur-[32px]"
-      />
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-slate-950">
+        {/* Fallback background image */}
+        <div
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ${
+            videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
+          }`}
+          style={{
+            backgroundImage: `url(${heroFallback})`,
+          }}
+        />
 
-      <div className="max-w-[1280px] mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+        {/* Background Video */}
+        {!videoError && (
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/hero-poster.jpg"
+            onLoadedData={handleVideoLoad}
+            onError={handleVideoError}
+            style={{
+              opacity: videoLoaded ? 1 : 0,
+              transition: 'opacity 0.5s ease-in-out',
+            }}
+          >
+            {/* Primary: High-quality MP4 (H.264) for desktop */}
+            <source src="/hero-hd.mp4" type="video/mp4" media="(min-width: 768px)" />
+            {/* Fallback: Compressed MP4 for mobile/tablet */}
+            <source src="/hero-mobile.mp4" type="video/mp4" />
+            {/* Alternative: WebM for better compression on supported browsers */}
+            <source src="/hero.webm" type="video/webm" />
+            {/* Legacy fallback */}
+            <source src="/hero.mp4" type="video/mp4" />
+            {/* Fallback message */}
+            <div className="absolute inset-0 flex items-center justify-center bg-slate-900 text-white">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🏠</div>
+                <p className="text-xl">Premium Real Estate Experience</p>
+              </div>
+            </div>
+          </video>
+        )}
+
+        {/* Enhanced gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+      </div>
+
+      <div className="relative z-10 max-w-[1280px] mx-auto px-8 py-24 lg:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-12 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            className="text-white"
           >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-3 bg-[rgba(212,117,91,0.1)] border border-[rgba(212,117,91,0.2)] rounded-full px-4 py-2 mb-10">
-              <div className="w-2 h-2 bg-[#2E3192] rounded-full" />
-              <span className="font-manrope font-bold text-xs text-[#2E3192] uppercase tracking-wider">
-                with Services
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-10 text-sm text-white"
+            >
+              <div className="w-2 h-2 bg-sky-300 rounded-full" />
+              <span className="font-abtos font-semibold uppercase tracking-[0.3em] text-white/90">
+                Luxury curated services
               </span>
             </motion.div>
 
-            {/* Heading */}
-            <motion.h1 variants={itemVariants} className="font-fraunces text-[56px] lg:text-[70px] leading-[1.1] text-[#111827] mb-8">
-              Discover Your<br />
-              <span className="italic text-[#2E3192]">Dream Home</span> with<br />
-              Services
+            <motion.h1
+              variants={itemVariants}
+              className="text-[42px] sm:text-[52px] lg:text-[70px] leading-[1.03] font-semibold tracking-[-0.03em] mb-8"
+            >
+              
+              <span className="block text-sky-200 mt-2">Discover your next dream homewith a modern concierge experience.</span>
+              
             </motion.h1>
 
-{/* Description */}
-            <motion.p variants={itemVariants} className="font-manrope font-light text-xl leading-7 text-[#4b5563] mb-12 max-w-[676px]">
-              We curate the market's finest listings tailored specifically to your lifestyle, making your property search effortless and precise.
+            <motion.p
+              variants={itemVariants}
+              className="max-w-[680px] text-lg lg:text-xl leading-8 text-slate-200/90 mb-12"
+            >
+              We bring premium listings, expert guidance, and effortless search into one polished experience—so every step feels smooth, informed, and beautifully designed.
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-10">
-              <a href="https://huntmynest.com/" target="_blank" rel="noopener noreferrer" className="bg-[#2E3192] text-white font-manrope font-bold text-lg px-8 py-4 rounded-xl shadow-[0px_10px_15px_-3px_rgba(212,117,91,0.25),0px_4px_6px_-4px_rgba(212,117,91,0.25)] hover:bg-[#B86851] transition-all hover:shadow-xl inline-flex items-center">
+              <a
+                href="https://huntmynest.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-sky-500 text-white text-lg font-semibold px-7 py-4 rounded-3xl shadow-[0_25px_80px_-30px_rgba(14,165,233,0.8)] transition-all hover:bg-sky-400"
+              >
                 Explore Properties
-                <span className="font-material-icons text-sm ml-2">arrow_forward</span>
+                <span className="material-icons text-base">arrow_forward</span>
               </a>
-              <Link to="/services" className="border-2 border-[#d1d5db] text-[#374151] font-manrope font-bold text-lg px-8 py-4 rounded-xl hover:border-[#2E3192] hover:text-[#2E3192] transition-all inline-flex items-center">
-                <span className="font-material-icons text-2xl text-[#2E3192] mr-2">explore</span>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 border border-white/30 bg-white/10 text-white text-lg font-semibold px-7 py-4 rounded-3xl hover:bg-white/15 transition-all"
+              >
+                <span className="material-icons text-base">explore</span>
                 Our Services
               </Link>
             </motion.div>
 
-            {/* Social Proof */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
               <div className="flex -space-x-2">
-                <img src={propertyImages[0]} alt="" className="w-10 h-10 rounded-full border-2 border-[#f8f6f6] object-cover" />
-                <img src={propertyImages[1]} alt="" className="w-10 h-10 rounded-full border-2 border-[#f8f6f6] object-cover" />
-                <img src={propertyImages[2]} alt="" className="w-10 h-10 rounded-full border-2 border-[#f8f6f6] object-cover" />
-                <div className="w-10 h-10 bg-[#111827] rounded-full border-2 border-[#f8f6f6] flex items-center justify-center">
-                  <span className="font-manrope font-bold text-xs text-white">+2k</span>
+                {propertyImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Customer ${index + 1}`}
+                    className="w-11 h-11 rounded-full border-2 border-white object-cover"
+                  />
+                ))}
+                <div className="w-11 h-11 rounded-full border-2 border-white bg-white/10 flex items-center justify-center text-xs text-white">
+                  +2k
                 </div>
               </div>
-              <span className="font-manrope text-sm text-[#6b7280]">
-                Join 2,000+ happy homeowners
-              </span>
+              <span className="text-sm text-slate-200/80">Trusted by over 2,000 homeowners and sellers.</span>
             </motion.div>
           </motion.div>
 
-          {/* Right - Featured Property Card */}
-          <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-[0px_25px_50px_-12px_#e5e7eb]">
-              <div className="relative h-[625px]">
-                <img
-                  src={propertyImages[3]}
-                  alt="Villa Serenity"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                {/* Property Info Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/90 border border-white/20 rounded-xl p-4 shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)]">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="font-fraunces font-bold text-lg text-[#111827] mb-1">Villa Serenity</h3>
-                      <p className="font-space-mono text-xs text-[#6b7280] uppercase tracking-wide">Beverly Hills, CA</p>
-                    </div>
-                    <div className="bg-[rgba(46,49,146,0.1)] px-2 py-1 rounded">
-                      <span className="font-manrope font-bold text-xs text-[#2E3192]">Featured</span>
-                    </div>
-                  </div>
-                  <div className="border-t border-[#e5e7eb] pt-3 flex items-center justify-between">
-                    <span className="font-space-mono text-sm text-[#4b5563]">$4,250,000</span>
-                    <div className="flex items-center gap-4 text-[#4b5563]">
-                      <div className="flex items-center gap-1">
-                        <span className="font-material-icons text-xs">bed</span>
-                        <span className="font-manrope text-sm">4</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="font-material-icons text-xs">shower</span>
-                        <span className="font-manrope text-sm">3.5</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <motion.div
+            variants={itemVariants}
+            className="rounded-[2rem] border border-white/15 bg-white/10 backdrop-blur-2xl p-8 shadow-[0_50px_120px_-40px_rgba(0,0,0,0.55)]"
+          >
+            <div className="max-w-[400px]">
+              <p className="text-sm uppercase tracking-[0.4em] text-slate-200/80 mb-5">Real estate elevated</p>
+              <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">
+                A confident way to search, select, and secure premium homes.
+              </h2>
+              <ul className="space-y-4 text-slate-200/90 text-sm leading-7">
+                <li className="flex gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-200">✓</span>
+                  Curated listings with verified quality and location insight.
+                </li>
+                <li className="flex gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-200">✓</span>
+                  Expert support tailored to your search and closing timeline.
+                </li>
+                <li className="flex gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-200">✓</span>
+                  Modern design, fast interactions, and polished visibility across devices.
+                </li>
+              </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
