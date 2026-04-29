@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CTASection: React.FC = () => {
   return (
-    <section className="bg-[#EC4613] py-24 relative overflow-hidden">
+    <section className="bg-[#2E3192] py-24 relative overflow-hidden">
       {/* Background Pattern */}
         <img 
           src="/src/images/Abstract architectural texture with light and shadow.png" 

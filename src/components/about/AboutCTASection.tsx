@@ -2,7 +2,7 @@ import React from 'react';
 
 const CTASection: React.FC = () => {
   return (
-    <section className="bg-[#EC4613] py-24 relative overflow-hidden">
+    <section className="bg-[#2E3192] py-24 relative overflow-hidden">
       {/* Background Pattern */}
         <img 
           src="/src/images/Abstract architectural texture with light and shadow.png" 
@@ -11,7 +11,7 @@ const CTASection: React.FC = () => {
         />
         <div className="absolute top-0 left-1/4 w-96"/>
 
-      <div className="max-w-[1280px] mx-auto px-8 text-center relative z-10">
+      <div className="max-w-[1280px] mx-auto px-8 text-center relative z-10 bg-[#2E3192]">
         <h2 className="font-fraunces text-5xl text-white mb-6">
           Ready to Find Your Dream Home?
         </h2>

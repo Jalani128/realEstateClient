@@ -11,12 +11,12 @@ const NewsletterBanner: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#C05621] py-16">
+    <section className="bg-[#2E3192] py-16">
       <div className="max-w-[1280px] mx-auto px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Left - Text Content */}
           <div className="flex-1 text-white">
-            <h2 className="font-syne font-bold text-3xl mb-3">
+            <h2 className="font-syne font-bold text-3xl mb-3 text-white" >
               Latest Assistance? Reach Us!
             </h2>
             <p className="font-manrope font-extralight text-lg opacity-90">

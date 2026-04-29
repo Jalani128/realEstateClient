@@ -1,10 +1,12 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'sonner';
 import PageTransition from './components/common/PageTransition';
 import ScrollToTop from './components/common/ScrollToTop';
 import StructuredData from './components/common/StructuredData';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
 
 // Lazy load pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -12,6 +14,10 @@ const PropertyDetailsPage = lazy(() => import('./pages/PropertyDetailsPage'));
 const AboutUsPage = lazy(() => import('./pages/AboutUsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
 
 function NotFoundPage() {
   return (
@@ -42,11 +48,37 @@ function AnimatedRoutes() {
       <StructuredData type="organization" />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
+          {/* Public routes */}
           <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
           <Route path="/property/:id" element={<PageTransition><PropertyDetailsPage /></PageTransition>} />
           <Route path="/services" element={<PageTransition><ServicesPage /></PageTransition>} />
           <Route path="/about" element={<PageTransition><AboutUsPage /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+          
+          {/* Admin auth route - public */}
+          <Route path="/admin/login" element={<PageTransition><LoginPage /></PageTransition>} />
+          
+          {/* Admin protected routes */}
+          <Route path="/admin/dashboard" element={
+            <ProtectedRoute>
+              <PageTransition><DashboardPage /></PageTransition>
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/team" element={
+            <ProtectedRoute>
+              <PageTransition><TeamPage /></PageTransition>
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/blogs" element={
+            <ProtectedRoute>
+              <PageTransition><BlogPage /></PageTransition>
+            </ProtectedRoute>
+          } />
+          
+          {/* Redirect root to admin login for admin area */}
+          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+          
+          {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AnimatePresence>
@@ -56,12 +88,14 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <AnimatedRoutes />
-      </Suspense>
-      <Toaster position="top-center" richColors />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <AnimatedRoutes />
+        </Suspense>
+        <Toaster position="top-center" richColors />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

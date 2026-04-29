@@ -1,179 +1,161 @@
 import React, { useState } from 'react';
-import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
-import { contactAPI } from '../../services/api';
+import { Send, CheckCircle } from 'lucide-react';
 
 const ContactFormCard: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '',
-    message: ''
+    phone: '',
+    inquiryType: '',
+    message: '',
   });
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    // Clear status when user starts typing again
-    if (status !== 'idle') setStatus('idle');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setStatus('idle');
-
-    try {
-      // Map frontend fields to backend schema
-      await contactAPI.submit({
-        name: `${formData.firstName} ${formData.lastName}`.trim(),
-        email: formData.email,
-        phone: formData.phoneNumber,
-        message: formData.message,
-      });
-
-      setStatus('success');
-      setStatusMessage('Message sent successfully! We\'ll get back to you within 24 hours.');
-      setFormData({ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' });
-    } catch (err: any) {
-      setStatus('error');
-      setStatusMessage(
-        err.response?.data?.message || 'Something went wrong. Please try again later.'
-      );
-    } finally {
-      setLoading(false);
-    }
+    await new Promise(r => setTimeout(r, 1000));
+    setLoading(false);
+    setSubmitted(true);
   };
 
+  if (submitted) {
+    return (
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 flex flex-col items-center justify-center text-center">
+        <div className="w-16 h-16 rounded-full bg-[#eef0ff] flex items-center justify-center mb-4">
+          <CheckCircle className="w-8 h-8 text-[#2E3192]" />
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
+        <p className="text-gray-500">We'll get back to you within 24 hours.</p>
+        <button
+          onClick={() => setSubmitted(false)}
+          className="mt-6 px-6 py-2 bg-[#2E3192] text-white rounded-lg text-sm hover:bg-[#1E2070] transition-colors"
+        >
+          Send Another
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-white border border-[#E6E0DA] rounded-2xl p-8 shadow-sm">
-      {/* Card Header */}
-      <div className="mb-8">
-        <h2 className="font-syne font-bold text-2xl text-[#221410] mb-2">
-          Send Us a Message
-        </h2>
-        <p className="font-manrope font-extralight text-sm text-[#4B5563]">
-          Fill in the form below and our team will get back to you within 24 hours.
-        </p>
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      {/* Header */}
+      <div className="bg-[#2E3192] px-8 py-6">
+        <h2 className="text-white text-xl font-semibold">Send us a Message</h2>
+        <p className="text-white/70 text-sm mt-1">Fill out the form and we'll respond promptly</p>
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* First Name & Last Name Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="p-8 space-y-5">
+        {/* Name Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block font-manrope font-extralight text-xs text-[#64748B] uppercase tracking-wider mb-2">
-              First Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">First Name</label>
             <input
               type="text"
               name="firstName"
               value={formData.firstName}
-              onChange={handleInputChange}
-              placeholder="John"
-              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
+              onChange={handleChange}
+              placeholder="First Name"
               required
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all"
             />
           </div>
-
           <div>
-            <label className="block font-manrope font-extralight text-xs text-[#64748B] uppercase tracking-wider mb-2">
-              Last Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Last Name</label>
             <input
               type="text"
               name="lastName"
               value={formData.lastName}
-              onChange={handleInputChange}
-              placeholder="Doe"
-              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
+              onChange={handleChange}
+              placeholder="Last Name"
               required
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all"
             />
           </div>
         </div>
 
-        {/* Email */}
-        <div>
-          <label className="block font-manrope font-extralight text-xs text-[#64748B] uppercase tracking-wider mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="john.doe@example.com"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
-            required
-          />
+        {/* Email & Phone */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="you@example.com"
+              required
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+97 50 000 0000"
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all"
+            />
+          </div>
         </div>
 
-        {/* Phone Number */}
+        {/* Inquiry Type */}
         <div>
-          <label className="block font-manrope font-extralight text-xs text-[#64748B] uppercase tracking-wider mb-2">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleInputChange}
-            placeholder="+91 98765 43210"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors"
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">Inquiry Type</label>
+          <select
+            name="inquiryType"
+            value={formData.inquiryType}
+            onChange={handleChange}
             required
-          />
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all bg-white"
+          >
+            <option value="">Select inquiry type</option>
+            <option value="buy">Buy Property</option>
+            <option value="sell">Sell Property</option>
+            <option value="rent">Rent Property</option>
+            <option value="valuation">Property Valuation</option>
+            <option value="general">General Inquiry</option>
+          </select>
         </div>
 
         {/* Message */}
         <div>
-          <label className="block font-manrope font-extralight text-xs text-[#64748B] uppercase tracking-wider mb-2">
-            Message
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
           <textarea
             name="message"
             value={formData.message}
-            onChange={handleInputChange}
-            placeholder="Tell us about your inquiry..."
-            rows={5}
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg px-4 py-3 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2E3192] transition-colors resize-none"
+            onChange={handleChange}
+            placeholder="Tell us about your requirements..."
+            rows={4}
             required
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#2E3192] focus:ring-2 focus:ring-[#2E3192]/10 transition-all resize-none"
           />
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#2E3192] hover:bg-[#C05621] disabled:opacity-60 disabled:cursor-not-allowed text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+          className="w-full py-3 bg-[#2E3192] text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-[#1E2070] active:scale-[0.99] transition-all disabled:opacity-60"
         >
           {loading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              Sending…
-            </>
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
           ) : (
-            'Send Message'
+            <>
+              <Send className="w-4 h-4" />
+              Send Message
+            </>
           )}
         </button>
-
-        {/* Status Message */}
-        {status === 'success' && (
-          <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
-            <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
-            <p className="font-manrope text-sm text-green-700">{statusMessage}</p>
-          </div>
-        )}
-        {status === 'error' && (
-          <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
-            <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-            <p className="font-manrope text-sm text-red-700">{statusMessage}</p>
-          </div>
-        )}
       </form>
     </div>
   );

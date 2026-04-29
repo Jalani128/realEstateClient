@@ -67,7 +67,18 @@ export default {
       },
       ringColor: {
         DEFAULT: '#2E3192',
-        primary: '#2E3192',
+        primary: {
+          50: '#F0F1FB',
+          100: '#D7DBF5',
+          200: '#BEC5EF',
+          300: '#9BA5E5',
+          400: '#7885DB',
+          500: '#2E3192',
+          600: '#2A2D82',
+          700: '#1F2263',
+          800: '#16174A',
+          900: '#0E0E31',
+        },
       },
       fontFamily: {
         sans: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
